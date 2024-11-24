@@ -35,8 +35,9 @@ class CellController extends Controller
     public function deleteLink($id)
     {
         $cell = \App\Models\Cell::findOrFail($id);
-
+        $cell->title = null;
         $cell->link = null;
+        $cell->color = null;
         $cell->save();
 
         return redirect()->route('cells.index')->with('success', 'Link successfully removed');
